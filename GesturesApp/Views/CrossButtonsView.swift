@@ -10,9 +10,13 @@ import SwiftUI
 // Pick a simple example path.
 fileprivate let W = UIScreen.main.bounds.width
 fileprivate let H = UIScreen.main.bounds.height
+fileprivate let MW = UIScreen.main.bounds.width / 2
+fileprivate let CHUNK = UIScreen.main.bounds.height / 4
 
-fileprivate let p1 = CGPoint(x: 50, y: H - 50)
-fileprivate let p2 = CGPoint(x: W - 50, y: 50)
+
+//redefine to fit cross path needs
+fileprivate let p1 = CGPoint(x: MW-50, y: H - CHUNK)
+fileprivate let p2 = CGPoint(x: MW-50, y: H - 2*CHUNK)
 
 fileprivate var samplePath : Path {
     let c1 = CGPoint(x: p1.x, y: (p1.y + p2.y)/2)
@@ -21,6 +25,18 @@ fileprivate var samplePath : Path {
     var result = Path()
     result.move(to: p1)
     result.addCurve(to: p2, control1: c1, control2: c2)
+    return result
+}
+
+fileprivate var samplePath2 : Path {
+    let y = p1.y
+    let x = (y-2) * (y-2)
+    
+    let c = CGPoint(x: x, y: y)
+
+    var result = Path()
+    result.move(to: p1)
+    result.addQuadCurve(to: p2, control: c)
     return result
 }
 
@@ -40,9 +56,7 @@ struct SlidingSpot : View {
             Circle()
             .frame(width: 30)
 
-            // Asperi is correct that this Modifier must be separate.
             .modifier(Moving(time: tMax, path: path, start: start))
-
             .animation(.easeInOut(duration: duration), value: tMax)
             .opacity(opac)
 
@@ -85,6 +99,8 @@ struct CrossButtonsView: View {
     var body: some View {
         
         SlidingSpot(path: samplePath, start: p1)
+        
+        
     }
 }
 

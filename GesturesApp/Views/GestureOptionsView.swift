@@ -11,22 +11,26 @@ struct GestureOptionsView: View {
     
     @State private var gestureChoice = ""
     @State private var gestureOptions = ["Cross-Buttons", "Three-Tap", "Face ID", "Hold Till Buzz"]
+    @State private var gestureViews = [CrossButtonsView(), CrossButtonsView(), CrossButtonsView(), CrossButtonsView()]
     
     var body: some View {
-        VStack{
-            
-            Title()
-            
+        
+        NavigationStack{
             VStack{
-                ForEach(gestureOptions, id: \.self){ num in
-                    Button(action: {
-                        gestureChoice = num
-                    }){
-                        Text("\(num)")
-                            .padding()
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                
+                Title()
+                
+                VStack{
+                    ForEach(0..<4) { num in
+                        NavigationLink{
+                            gestureViews[num]
+                        }label: {
+                            Text("\(gestureOptions[num])")
+                                .padding()
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
                     }
                 }
             }
