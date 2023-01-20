@@ -24,21 +24,35 @@ fileprivate var samplePath3: Path {
 struct SlidingSpot : View {
     let path    : Path
     let start   : CGPoint
-    let duration: Double = 1.4
+    let duration: Double = 2
 
     @State var isMovingForward = false
     @State var isPressed = false
+    @GestureState var currPress = false
 
     var tMax : CGFloat { isMovingForward ? 1 : 0 }
 
     var body: some View {
         VStack {
-            Circle()
-            .frame(width: 30)
-            .modifier(Moving(time: tMax, path: path, start: start))
-            .animation(.easeInOut(duration: duration).repeatForever(), value: tMax)
-
-
+            Button(action:{
+                //action
+            }){
+                Circle()
+                    .frame(width: 50)
+                    .overlay(
+                        Circle()
+                            .fill(Color.green)
+                            .opacity(isPressed ? 1 : 0)
+                    )
+                    .modifier(Moving(time: tMax, path: path, start: start))
+                    .animation(.easeInOut(duration: duration).repeatForever(), value: tMax)
+                    .onLongPressGesture{
+                        isPressed = true
+                    } onPressingChanged: { inProgress in
+                        isPressed = false
+                    }
+            }
+            
             Button {
                 isMovingForward = true
 
