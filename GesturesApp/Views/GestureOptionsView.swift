@@ -10,7 +10,7 @@ import SwiftUI
 struct GestureOptionsView: View {
     
     @State private var gestureChoice = ""
-    @State private var gestureOptions = ["Cross-Buttons", "Three-Tap", "Face ID", "Hold Till Buzz"]
+    @State private var gestureOptions = ["Cross-Buttons", "Three-Tap", "SpotLight", "Hold Till Buzz"]
     @State private var gestureViews = [CrossButtonsView(), CrossButtonsView(), CrossButtonsView(), CrossButtonsView()]
     
     var body: some View {
