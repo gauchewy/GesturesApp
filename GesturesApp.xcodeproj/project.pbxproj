@@ -15,6 +15,7 @@
 		71382330297A17CF0017E911 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138232F297A17CF0017E911 /* Title.swift */; };
 		71382332297A1CA10017E911 /* CrossButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71382331297A1CA10017E911 /* CrossButtonsView.swift */; };
 		71382334297B2AAB0017E911 /* TestPathCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71382333297B2AAB0017E911 /* TestPathCurve.swift */; };
+		71382336297B4C580017E911 /* SpotlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71382335297B4C580017E911 /* SpotlightView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		7138232F297A17CF0017E911 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		71382331297A1CA10017E911 /* CrossButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossButtonsView.swift; sourceTree = "<group>"; };
 		71382333297B2AAB0017E911 /* TestPathCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPathCurve.swift; sourceTree = "<group>"; };
+		71382335297B4C580017E911 /* SpotlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		7138232D297A17960017E911 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				71382335297B4C580017E911 /* SpotlightView.swift */,
 				71382333297B2AAB0017E911 /* TestPathCurve.swift */,
 				7138232B297A17630017E911 /* GestureOptionsView.swift */,
 				7138231F2979F6A70017E911 /* ContentView.swift */,
@@ -168,6 +171,7 @@
 				71382330297A17CF0017E911 /* Title.swift in Sources */,
 				713823202979F6A70017E911 /* ContentView.swift in Sources */,
 				71382334297B2AAB0017E911 /* TestPathCurve.swift in Sources */,
+				71382336297B4C580017E911 /* SpotlightView.swift in Sources */,
 				7138232C297A17630017E911 /* GestureOptionsView.swift in Sources */,
 				7138231E2979F6A70017E911 /* GesturesAppApp.swift in Sources */,
 				71382332297A1CA10017E911 /* CrossButtonsView.swift in Sources */,
@@ -299,6 +303,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GesturesApp/Preview Content\"";
+				DEVELOPMENT_TEAM = PB5KXTJ93P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -327,6 +332,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GesturesApp/Preview Content\"";
+				DEVELOPMENT_TEAM = PB5KXTJ93P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
