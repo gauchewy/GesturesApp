@@ -8,8 +8,9 @@
 import SwiftUI
 
 
-let p1 = CGPoint(x: 300, y: 300)
-let p2 = CGPoint(x: 300, y: 500)
+let p1 = CGPoint(x: 100, y: 100)
+let p2 = CGPoint(x: 100, y: 500)
+
 
 fileprivate var samplePath3: Path {
         let path = UIBezierPath()
@@ -21,48 +22,58 @@ fileprivate var samplePath3: Path {
         return resPath
 }
 
+struct LongPressButtonStyle: ButtonStyle
+{
+    @Binding var isPressed: Bool
+    
+    func makeBody(configuration: Configuration) -> some View
+    {
+        if(configuration.isPressed)
+        {
+            // call your action here but don't change @State of current view
+            print("Button is pressed")
+            
+        }
+        else
+        {
+
+            // call your stop-action here but don't change @State of current view
+            print("Button released")
+        }
+        
+        return configuration.label
+            .padding()
+            .background(configuration.isPressed ? Color.green : Color.red)
+            .foregroundColor(.white)
+            .cornerRadius(20)
+            .scaleEffect(configuration.isPressed ? 0.8 : 1)
+            .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
+    }
+}
+
+
 struct SlidingSpot : View {
     let path    : Path
     let start   : CGPoint
     let duration: Double = 2
 
-    @State var isMovingForward = false
-    @State var isPressed = false
-    @GestureState var currPress = false
-
-    var tMax : CGFloat { isMovingForward ? 1 : 0 }
+    
+    @State private var time : CGFloat = 0
+    @State private var isPressed = false //this is a successful usage of @bindings!!!!!
 
     var body: some View {
+        
         VStack {
-            Button(action:{
-                //action
-            }){
-                Circle()
-                    .frame(width: 50)
-                    .overlay(
-                        Circle()
-                            .fill(Color.green)
-                            .opacity(isPressed ? 1 : 0)
-                    )
-                    .modifier(Moving(time: tMax, path: path, start: start))
-                    .animation(.easeInOut(duration: duration).repeatForever(), value: tMax)
-                    .onLongPressGesture{
-                        isPressed = true
-                    } onPressingChanged: { inProgress in
-                        isPressed = false
-                    }
-            }
-            
-            Button {
-                isMovingForward = true
-
-                // Sneak back to p1. This is a code smell.
-                DispatchQueue.main.asyncAfter(deadline: .now() + duration + 0.1) {
-                    isMovingForward = false
-                }
-            } label: {
-                Text("Go")
-            }
+            Button("Press me")
+                   {
+                       //some action
+                   }
+                   .buttonStyle(LongPressButtonStyle(isPressed: $isPressed))  //bindings used here successfully
+                   .modifier(Moving(time: time, path: path, start: start))
+                   .animation(.easeInOut(duration: duration).repeatForever(), value: time)
+                   .onAppear {
+                       self.time = 1
+               }
         }
     }
 }
@@ -89,6 +100,8 @@ struct Moving: AnimatableModifier {
 
 struct CrossButtonsView: View {
 
+    @State private var isPressed = false //idk if this works or not
+    var isPressed2: Binding<Bool> {$isPressed} //binding made from a binding
     var body: some View {
         
         SlidingSpot(path: samplePath3, start: p1)

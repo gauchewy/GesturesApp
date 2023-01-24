@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
 
+struct ContentView: View {
+    
     var body: some View {
         
-        GestureOptionsView()
-
+        GestureOptionsView(isPressed2: false)
+        
     }
 }
 

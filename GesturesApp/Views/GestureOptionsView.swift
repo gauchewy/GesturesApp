@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GestureOptionsView: View {
+    @State var isPressed2: Bool
     
     @State private var gestureChoice = ""
     @State private var gestureOptions = [
@@ -34,7 +35,8 @@ struct GestureOptionsView: View {
                 VStack{
                     ForEach(0..<4) { num in
                         NavigationLink{
-                            WrapperView(content: gestureViews[num])
+                            //WrapperView(content: gestureViews[num])
+                            WrapperView(isPressed2: true)
                         }label: {
                             Text("\(gestureOptions[num])")
                                 .padding()
@@ -51,6 +53,6 @@ struct GestureOptionsView: View {
 
 struct GestureOptionsView_Previews: PreviewProvider {
     static var previews: some View {
-        GestureOptionsView()
+        GestureOptionsView(isPressed2: false)
     }
 }
