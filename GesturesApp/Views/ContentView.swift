@@ -10,13 +10,9 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        ZStack {
-            Image("frog")
-                .resizable()
-                .scaledToFit()
-        }
-        //.modifier(content)
-        .padding()
+        
+        GestureOptionsView()
+
     }
 }
 

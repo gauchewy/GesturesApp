@@ -10,8 +10,19 @@ import SwiftUI
 struct GestureOptionsView: View {
     
     @State private var gestureChoice = ""
-    @State private var gestureOptions = ["Cross-Buttons", "Three-Tap", "SpotLight", "Hold Till Buzz"]
-    @State private var gestureViews = [CrossButtonsView(), CrossButtonsView(), CrossButtonsView(), CrossButtonsView()]
+    @State private var gestureOptions = [
+        "Cross-Buttons",
+        "Three-Tap",
+        "SpotLight",
+        "Face ID"
+    ]
+    
+    @State private var gestureViews = [
+        CrossButtonsView(),
+        CrossButtonsView(),
+        CrossButtonsView(),
+        CrossButtonsView()
+    ]
     
     var body: some View {
         
@@ -23,7 +34,7 @@ struct GestureOptionsView: View {
                 VStack{
                     ForEach(0..<4) { num in
                         NavigationLink{
-                            gestureViews[num]
+                            WrapperView(content: gestureViews[num])
                         }label: {
                             Text("\(gestureOptions[num])")
                                 .padding()
