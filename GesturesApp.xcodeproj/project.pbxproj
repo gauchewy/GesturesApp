@@ -17,6 +17,7 @@
 		71382334297B2AAB0017E911 /* TestPathCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71382333297B2AAB0017E911 /* TestPathCurve.swift */; };
 		71382336297B4C580017E911 /* SpotlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71382335297B4C580017E911 /* SpotlightView.swift */; };
 		714835D5297F7B5E0045213A /* WrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714835D4297F7B5E0045213A /* WrapperView.swift */; };
+		715CFB252984466F00860B2D /* DisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715CFB242984466F00860B2D /* DisplayManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		71382333297B2AAB0017E911 /* TestPathCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPathCurve.swift; sourceTree = "<group>"; };
 		71382335297B4C580017E911 /* SpotlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightView.swift; sourceTree = "<group>"; };
 		714835D4297F7B5E0045213A /* WrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperView.swift; sourceTree = "<group>"; };
+		715CFB242984466F00860B2D /* DisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				7138231D2979F6A70017E911 /* GesturesAppApp.swift */,
 				713823212979F6AA0017E911 /* Assets.xcassets */,
 				713823232979F6AA0017E911 /* Preview Content */,
+				715CFB242984466F00860B2D /* DisplayManager.swift */,
 			);
 			path = GesturesApp;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				7138232C297A17630017E911 /* GestureOptionsView.swift in Sources */,
 				7138231E2979F6A70017E911 /* GesturesAppApp.swift in Sources */,
 				714835D5297F7B5E0045213A /* WrapperView.swift in Sources */,
+				715CFB252984466F00860B2D /* DisplayManager.swift in Sources */,
 				71382332297A1CA10017E911 /* CrossButtonsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
