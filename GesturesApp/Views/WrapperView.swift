@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-//struct WrapperView<Content: View>: View {   //CHANGED TO HARDCODE CROSSBUTTONS IN WRAPPERVIEW
 struct WrapperView : View {
     
-    //@State private var isPressed2 = false
-    var isPressed2: Bool
+    @State var isPressed = false
     
     var body: some View {
         ZStack {
@@ -22,7 +20,7 @@ struct WrapperView : View {
             
             Rectangle()
                 .fill(Color.blue)
-                .opacity(isPressed2 ? 0 : 0.5)
+                .opacity(self.isPressed ? 0 : 0.5)
             
             CrossButtonsView()
             
@@ -35,7 +33,7 @@ struct WrapperView_Previews: PreviewProvider {
     static var previews: some View {
 
         Group{
-            WrapperView(isPressed2: true)
+            WrapperView()
         }
     }
 }

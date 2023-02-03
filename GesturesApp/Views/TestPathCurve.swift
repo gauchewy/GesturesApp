@@ -10,11 +10,20 @@ import SwiftUI
 
 extension UIBezierPath {
     
-    static var quad: UIBezierPath{
+    static var quadRight: UIBezierPath{
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0.5, y: 2.0))
-        path.addQuadCurve(to: CGPoint(x: 0.5, y: 1.5),
-                          controlPoint: CGPoint(x: 1.8, y: 1.8))
+        path.move(to: CGPoint(x: 0.25, y: 2.0))
+        path.addQuadCurve(to: CGPoint(x: 0.25, y: 1.5),
+                          controlPoint: CGPoint(x: 2.5, y: 1.8))
+        
+        return path
+    }
+    
+    static var quadLeft: UIBezierPath{
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 1.25, y: 1.0))
+        path.addQuadCurve(to: CGPoint(x: 0.25, y: 1),
+                          controlPoint: CGPoint(x: 0.25, y: 1.8))
         
         return path
     }
@@ -25,14 +34,8 @@ struct ScaledBezier: Shape {
 
     func path(in rect: CGRect) -> Path {
         let path = Path(bezierPath.cgPath)
-
-        // Figure out how much bigger we need to make our path in order for it to fill the available space without clipping.
         let multiplier = min(rect.width, rect.height)
-
-        // Create an affine transform that uses the multiplier for both dimensions equally.
         let transform = CGAffineTransform(scaleX: multiplier, y: multiplier)
-
-        // Apply that scale and send back the result.
         return path.applying(transform)
     }
 }
@@ -41,10 +44,18 @@ struct ScaledBezier: Shape {
 
 struct TestPathCurve: View {
     var body: some View {
-        ScaledBezier(bezierPath: .quad)
-            .stroke(lineWidth: 5)
-            .frame(width: 200, height: 200)
         
+        ZStack{
+            
+            ScaledBezier(bezierPath: .quadRight)
+                .stroke(lineWidth: 5)
+                .frame(width: 300, height: 250)
+            
+            ScaledBezier(bezierPath: .quadLeft)
+                .stroke(lineWidth: 5)
+                .frame(width: 300, height: 250)
+            
+        }
     }
 }
 

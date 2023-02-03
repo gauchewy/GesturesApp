@@ -12,8 +12,8 @@ struct ContentView: View {
     
     var body: some View {
         
-        GestureOptionsView(isPressed2: false)
-        
+        //GestureOptionsView()
+        SlideButtonsView()
     }
 }
 

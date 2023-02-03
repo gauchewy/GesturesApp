@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GestureOptionsView: View {
-    @State var isPressed2: Bool
-    
+
+
     @State private var gestureChoice = ""
     @State private var gestureOptions = [
         "Cross-Buttons",
@@ -18,12 +18,6 @@ struct GestureOptionsView: View {
         "Face ID"
     ]
     
-    @State private var gestureViews = [
-        CrossButtonsView(),
-        CrossButtonsView(),
-        CrossButtonsView(),
-        CrossButtonsView()
-    ]
     
     var body: some View {
         
@@ -35,8 +29,7 @@ struct GestureOptionsView: View {
                 VStack{
                     ForEach(0..<4) { num in
                         NavigationLink{
-                            //WrapperView(content: gestureViews[num])
-                            WrapperView(isPressed2: true)
+                            SlideButtonsView()  // why does this not work in this view, but works in contentview
                         }label: {
                             Text("\(gestureOptions[num])")
                                 .padding()
@@ -53,6 +46,6 @@ struct GestureOptionsView: View {
 
 struct GestureOptionsView_Previews: PreviewProvider {
     static var previews: some View {
-        GestureOptionsView(isPressed2: false)
+        GestureOptionsView()
     }
 }

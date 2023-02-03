@@ -12,7 +12,7 @@ let p1 = CGPoint(x: 100, y: 100)
 let p2 = CGPoint(x: 100, y: 500)
 
 
-fileprivate var samplePath3: Path {
+var samplePath3: Path {
         let path = UIBezierPath()
         path.move(to: p1)
         path.addQuadCurve(to: p2,
@@ -30,14 +30,11 @@ struct LongPressButtonStyle: ButtonStyle
     {
         if(configuration.isPressed)
         {
-            // call your action here but don't change @State of current view
             print("Button is pressed")
             
         }
         else
         {
-
-            // call your stop-action here but don't change @State of current view
             print("Button released")
         }
         
@@ -59,7 +56,7 @@ struct SlidingSpot : View {
 
     
     @State private var time : CGFloat = 0
-    @State private var isPressed = false //this is a successful usage of @bindings!!!!!
+    @State var isPressed = false
 
     var body: some View {
         
@@ -100,8 +97,7 @@ struct Moving: AnimatableModifier {
 
 struct CrossButtonsView: View {
 
-    @State private var isPressed = false //idk if this works or not
-    var isPressed2: Binding<Bool> {$isPressed} //binding made from a binding
+
     var body: some View {
         
         SlidingSpot(path: samplePath3, start: p1)

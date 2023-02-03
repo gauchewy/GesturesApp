@@ -11,7 +11,7 @@ import SwiftUI
 struct GesturesAppApp: App {
     var body: some Scene {
         WindowGroup {
-            GestureOptionsView(isPressed2: false)
+            GestureOptionsView()
         }
     }
 }
