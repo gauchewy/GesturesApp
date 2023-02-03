@@ -43,9 +43,9 @@ var rightPathBottom: Path {
 }
 
 var leftPathTop: Path {
-    let startPoint = CGPoint(x:wBlock*3, y:hBlock*5)
-    let endPoint = CGPoint(x:wBlock*3, y:hBlock*7)
-    let ctrlPoint = CGPoint(x:wBlock*0, y:hBlock*6)
+    let endPoint = CGPoint(x:wBlock*3, y:hBlock*4)
+    let startPoint = CGPoint(x:wBlock*3, y:hBlock*6)
+    let ctrlPoint = CGPoint(x:wBlock*0, y:hBlock*5)
     
     let path = UIBezierPath()
     path.move(to: startPoint)
@@ -56,9 +56,9 @@ var leftPathTop: Path {
 }
 
 var leftPathBottom: Path {
-    let startPoint = CGPoint(x:wBlock*3, y:hBlock*7)
-    let endPoint = CGPoint(x:wBlock*3, y:hBlock*9)
-    let ctrlPoint = CGPoint(x:wBlock*0, y:hBlock*8)
+    let endPoint = CGPoint(x:wBlock*3, y:hBlock*6)
+    let startPoint = CGPoint(x:wBlock*3, y:hBlock*8)
+    let ctrlPoint = CGPoint(x:wBlock*0, y:hBlock*7)
     
     let path = UIBezierPath()
     path.move(to: startPoint)
@@ -114,6 +114,7 @@ struct Move: AnimatableModifier {
     }
 }
 
+
 struct MyButton: View{
     let path    : Path
     let start   : CGPoint
@@ -155,7 +156,7 @@ struct SlideButtonsView: View {
             Rectangle()
                 .fill(Color.blue)
                 .edgesIgnoringSafeArea(.all)
-                .opacity(isPressed1 && isPressed2 ? 0 : 1) //change to include all 3?
+                .opacity(isPressed1 ? 0 : 1) //change to include all 4
             
             
             let topRightStart = CGPoint(x:wBlock*2, y:hBlock*5)
@@ -164,10 +165,10 @@ struct SlideButtonsView: View {
             let bottomRightStart = CGPoint(x:wBlock*2, y:hBlock*7)
             MyButton(path: rightPathBottom, start: bottomRightStart, isPressed: self.$isPressed2)
             
-            let topLeftStart = CGPoint(x:wBlock*3, y:hBlock*5)
+            let topLeftStart = CGPoint(x:wBlock*3, y:hBlock*6)
             MyButton(path: leftPathTop, start: topLeftStart, isPressed: self.$isPressed3)
             
-            let bottomLeftStart = CGPoint(x:wBlock*3, y:hBlock*7)
+            let bottomLeftStart = CGPoint(x:wBlock*3, y:hBlock*8)
             MyButton(path: leftPathBottom, start: bottomLeftStart, isPressed: self.$isPressed4)
             
         }
