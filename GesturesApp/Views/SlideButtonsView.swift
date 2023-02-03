@@ -8,14 +8,28 @@
 import SwiftUI
 
 
-// define Path
+// define dimensions
 var screen = UIScreen.main.bounds
 var screenWidth = screen.width
 var screenHeight = screen.height
 var wBlock = screen.width / 5
 var hBlock = screen.height / 10
 
-var rightPath: Path {
+
+var rightPathTop: Path {
+    let startPoint = CGPoint(x:wBlock*2, y:hBlock*5)
+    let endPoint = CGPoint(x:wBlock*2, y:hBlock*7)
+    let ctrlPoint = CGPoint(x:wBlock*5, y:hBlock*6)
+    
+    let path = UIBezierPath()
+    path.move(to: startPoint)
+    path.addQuadCurve(to: endPoint, controlPoint: ctrlPoint)
+    
+    let resultPath = Path(path.cgPath)
+    return resultPath
+}
+
+var rightPathBottom: Path {
     let startPoint = CGPoint(x:wBlock*2, y:hBlock*7)
     let endPoint = CGPoint(x:wBlock*2, y:hBlock*9)
     let ctrlPoint = CGPoint(x:wBlock*5, y:hBlock*8)
@@ -27,6 +41,34 @@ var rightPath: Path {
     let resultPath = Path(path.cgPath)
     return resultPath
 }
+
+var leftPathTop: Path {
+    let startPoint = CGPoint(x:wBlock*3, y:hBlock*5)
+    let endPoint = CGPoint(x:wBlock*3, y:hBlock*7)
+    let ctrlPoint = CGPoint(x:wBlock*0, y:hBlock*6)
+    
+    let path = UIBezierPath()
+    path.move(to: startPoint)
+    path.addQuadCurve(to: endPoint, controlPoint: ctrlPoint)
+    
+    let resultPath = Path(path.cgPath)
+    return resultPath
+}
+
+var leftPathBottom: Path {
+    let startPoint = CGPoint(x:wBlock*3, y:hBlock*7)
+    let endPoint = CGPoint(x:wBlock*3, y:hBlock*9)
+    let ctrlPoint = CGPoint(x:wBlock*0, y:hBlock*8)
+    
+    let path = UIBezierPath()
+    path.move(to: startPoint)
+    path.addQuadCurve(to: endPoint, controlPoint: ctrlPoint)
+    
+    let resultPath = Path(path.cgPath)
+    return resultPath
+}
+
+
 
 
 struct LongPressButtonStyle2: ButtonStyle
@@ -55,9 +97,9 @@ struct LongPressButtonStyle2: ButtonStyle
 
 // control Movement
 struct Move: AnimatableModifier {
-    var time : CGFloat  // Normalized from 0...1.
+    var time : CGFloat
     let path : Path
-    let start: CGPoint  // Could derive from path.
+    let start: CGPoint
 
     var animatableData: CGFloat {
         get { time }
@@ -91,17 +133,17 @@ struct MyButton: View{
                 self.time = 1
             }
         }
-        //.animation(.easeInOut(duration: duration).repeatForever(autoreverses: true), value: time)
-        
-//        .onAppear {
-//            self.time = 1
-//    }
+
     }
 }
 
 struct SlideButtonsView: View {
     
-    @State var isPressed = false
+    @State var isPressed1 = false
+    @State var isPressed2 = false
+    @State var isPressed3 = false
+    @State var isPressed4 = false
+    
     
     var body: some View {
         ZStack{
@@ -113,9 +155,21 @@ struct SlideButtonsView: View {
             Rectangle()
                 .fill(Color.blue)
                 .edgesIgnoringSafeArea(.all)
-                .opacity(self.isPressed ? 0 : 1)
+                .opacity(isPressed1 && isPressed2 ? 0 : 1) //change to include all 3?
             
-            MyButton(path: rightPath, start: p1, isPressed: self.$isPressed)
+            
+            let topRightStart = CGPoint(x:wBlock*2, y:hBlock*5)
+            MyButton(path: rightPathTop, start: topRightStart, isPressed: self.$isPressed1)
+            
+            let bottomRightStart = CGPoint(x:wBlock*2, y:hBlock*7)
+            MyButton(path: rightPathBottom, start: bottomRightStart, isPressed: self.$isPressed2)
+            
+            let topLeftStart = CGPoint(x:wBlock*3, y:hBlock*5)
+            MyButton(path: leftPathTop, start: topLeftStart, isPressed: self.$isPressed3)
+            
+            let bottomLeftStart = CGPoint(x:wBlock*3, y:hBlock*7)
+            MyButton(path: leftPathBottom, start: bottomLeftStart, isPressed: self.$isPressed4)
+            
         }
     }
 }
